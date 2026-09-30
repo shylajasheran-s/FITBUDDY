@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FitBuddy - Feedback</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        .header {
+            background: #1f6feb;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 180px;
+            padding: 12px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 13px;
+            border: none;
+            border-radius: 7px;
+            background: #1f6feb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1557b0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>FitBuddy AI</h1>
+        <p>Update Your Workout Plan</p>
+    </div>
+
+    <div class="container">
+
+        <h2>Hello {{ user.name }} 👋</h2>
+
+        <p>
+            Tell FitBuddy how you feel about your current workout plan.
+        </p>
+
+        <form action="/submit-feedback" method="post">
+
+            <input
+                type="hidden"
+                name="user_id"
+                value="{{ user.user_id }}"
+            >
+
+            <label>
+                <strong>Your Feedback</strong>
+            </label>
+
+            <textarea
+                name="feedback"
+                placeholder="Example: The workout is too difficult. Please reduce the intensity."
+                required
+            ></textarea>
+
+            <button type="submit">
+                Update My Workout Plan
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
