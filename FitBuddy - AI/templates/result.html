@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FitBuddy - Your Workout Plan</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        .header {
+            background: #1f6feb;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            color: #1f6feb;
+        }
+
+        .user-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .info-box {
+            background: #f4f7fb;
+            padding: 12px;
+            border-radius: 7px;
+        }
+
+        .plan {
+            white-space: pre-wrap;
+            line-height: 1.6;
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .tip {
+            background: #eef5ff;
+            padding: 20px;
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .button {
+            text-decoration: none;
+            background: #1f6feb;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 7px;
+        }
+
+        .button:hover {
+            background: #1557b0;
+        }
+
+        @media (max-width: 600px) {
+            .user-info {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>FitBuddy AI</h1>
+        <p>Your Personalized Fitness Plan</p>
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>👤 User Information</h2>
+
+            <div class="user-info">
+
+                <div class="info-box">
+                    <strong>Name:</strong>
+                    {{ user.name }}
+                </div>
+
+                <div class="info-box">
+                    <strong>User ID:</strong>
+                    {{ user.user_id }}
+                </div>
+
+                <div class="info-box">
+                    <strong>Age:</strong>
+                    {{ user.age }}
+                </div>
+
+                <div class="info-box">
+                    <strong>Weight:</strong>
+                    {{ user.weight }} kg
+                </div>
+
+                <div class="info-box">
+                    <strong>Goal:</strong>
+                    {{ user.goal }}
+                </div>
+
+                <div class="info-box">
+                    <strong>Intensity:</strong>
+                    {{ user.intensity }}
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>🏋️ Your 7-Day Workout Plan</h2>
+
+            <div class="plan">{{ plan }}</div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>🥗 Nutrition & Recovery Tip</h2>
+
+            <div class="tip">
+                {{ nutrition_tip }}
+            </div>
+
+        </div>
+
+
+        {% if feedback_updated %}
+
+        <div class="card">
+
+            <h2>✅ Plan Updated</h2>
+
+            <p>
+                Your workout plan has been updated based on your feedback.
+            </p>
+
+        </div>
+
+        {% endif %}
+
+
+        <div class="buttons">
+
+            <a
+                class="button"
+                href="/feedback/{{ user.user_id }}"
+            >
+                Give Feedback
+            </a>
+
+            <a
+                class="button"
+                href="/"
+            >
+                Create New Plan
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
